@@ -6,30 +6,39 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:09:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 22:06:01 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/16 00:36:44 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_transform.h"
 
-static void	init_config(int *config[5])
+static char	*init_config(void)
 {
-	config[0] = -1;
-	config[1] = -1;
-	config[2] = -1;
-	config[3] = -1;
-	config[4] = -1;
+	char	*config;
+
+	config = malloc(5 * sizeof(char));
+	if (!config)
+		return (NULL);
+	config[0] = 0;
+	config[1] = 0;
+	config[2] = 0;
+	config[3] = 0;
+	config[4] = 0;
+	return (config);
 }
 
 int	str_transform_s(char **options, int size)
 {
 	char	*content;
-	int		config[5];
+	char	*config;
+	char	flag;
 	int		ret;
 
 	ft_putendl_fd("Running str_transform_s", STDOUT);
 	content = NULL;
-	init_config(&config);
+	config = init_config();
+	if (!config)
+		return (MALLOC_ERROR);
 	ret = get_file(&content);
 	if (ret == SUCCESS)
 	{
@@ -37,10 +46,16 @@ int	str_transform_s(char **options, int size)
 		ft_putstr_fd(content, STDOUT);
 		while (size--)
 		{
-			options;
+			flag = which_config_flag(options[size]);
+			if (flag && !ft_strchr(config, flag))
+				strcat_one(config, flag);
 		}
+		ft_putstr_fd("config == \"", STDOUT);
+		ft_putstr_fd(config, STDOUT);
+		ft_putstr_fd("\"\n", STDOUT);
 	}
 	if (content)
 		free(content);
+	free(config);
 	return (ret);
 }
