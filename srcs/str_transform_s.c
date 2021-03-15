@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:09:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 00:36:44 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/16 00:43:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ int	str_transform_s(char **options, int size)
 	config = init_config();
 	if (!config)
 		return (MALLOC_ERROR);
+	while (size--)
+	{
+		flag = which_config_flag(options[size]);
+		if (flag && !ft_strchr(config, flag))
+			strcat_one(config, flag);
+	}
+	ft_putstr_fd("config == \"", STDOUT);
+	ft_putstr_fd(config, STDOUT);
+	ft_putstr_fd("\"\n", STDOUT);
 	ret = get_file(&content);
 	if (ret == SUCCESS)
 	{
 		ft_putendl_fd("content:", STDOUT);
 		ft_putstr_fd(content, STDOUT);
-		while (size--)
-		{
-			flag = which_config_flag(options[size]);
-			if (flag && !ft_strchr(config, flag))
-				strcat_one(config, flag);
-		}
-		ft_putstr_fd("config == \"", STDOUT);
-		ft_putstr_fd(config, STDOUT);
-		ft_putstr_fd("\"\n", STDOUT);
 	}
 	if (content)
 		free(content);
