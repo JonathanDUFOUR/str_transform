@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 22:28:16 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/14 23:11:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/15 18:49:38 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	err_msg(int err_code)
 {
-	if (err_code == WRONG_AC)
-		ft_putendl_fd("ERROR: This program doesn't need any argument", STDERR);
+	if (err_code == READ_ERROR)
+		ft_putendl_fd("\e[31mERROR: read() failed\e[0m", STDERR);
 	else if (err_code == WRONG_BIN_NAME)
-		ft_putendl_fd("ERROR: The binary file has not a valid name", STDERR);
+		ft_putendl_fd("\e[31mERROR: Binary file name invalid\e[0m", STDERR);
+	else if (err_code == MALLOC_ERROR)
+		ft_putendl_fd("\e[31mERROR: malloc() failed\e[0m", STDERR);
 	return (42);
 }

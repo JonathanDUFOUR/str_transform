@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_s.c                                           :+:      :+:    :+:   */
+/*   ft_putlnbr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:48:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 21:48:25 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/15 18:57:16 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/15 19:04:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_transform.h"
 
-int	main(int ac, char **av)
+void	ft_putlnbr_fd(long n, int fd)
 {
-	int		ret;
-	char	**options;
+	unsigned long	abs;
+	char			d;
 
-	(void)ac;
-	options = av + 1;
-	if (!ft_strcmp(*av, "./str_transform_s"))
-		ret = str_transform_s(options, ac - 1);
-	else
-		return (err_msg(WRONG_BIN_NAME));
-	if (ret != SUCCESS)
-		return (err_msg(ret));
-	return (SUCCESS);
+	abs = n;
+	if (n < 0)
+	{
+		abs = -n;
+		write(fd, "-", 1);
+	}
+	if (abs > 9)
+		ft_putlnbr_fd(abs / 10, fd);
+	d = abs % 10 + '0';
+	write (fd, &d, 1);
 }

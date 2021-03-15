@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_s.c                                           :+:      :+:    :+:   */
+/*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:48:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 21:48:25 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/15 18:05:19 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/15 20:49:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_transform.h"
 
-int	main(int ac, char **av)
+int	get_file(char **content)
 {
-	int		ret;
-	char	**options;
+	ssize_t	read_ret;
+	char	*buff;
+	char	*dent;
 
-	(void)ac;
-	options = av + 1;
-	if (!ft_strcmp(*av, "./str_transform_s"))
-		ret = str_transform_s(options, ac - 1);
-	else
-		return (err_msg(WRONG_BIN_NAME));
-	if (ret != SUCCESS)
-		return (err_msg(ret));
-	return (SUCCESS);
+	(void)read_ret;
+	buff = malloc((BUFF_SIZE + 1) * sizeof(char));
+	if (!(buff))
+		return (MALLOC_ERROR);
+	read_ret = read(STDIN, buff, BUFF_SIZE);
+	while (read_ret > 0)
+	{
+		dent = *content;
+		*content = ft_strjoin(*content, buff);
+		if (dent)
+			free(dent);
+		read_ret = read(STDIN, buff, BUFF_SIZE);
+	}
+	free(buff);
+	return (read_ret);
 }

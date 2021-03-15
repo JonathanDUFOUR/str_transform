@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/14 15:35:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/03/15 16:47:48 by jodufour         ###   ########.fr        #
+#    Updated: 2021/03/15 21:00:51 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,18 @@ CFLAGS		:=	-Wall -Wextra -ansi -I ${INCLUDES}
 
 COMMON_SRCS	:=	\
 				err_msg.c			\
+				get_file.c			\
+				ft_bzero.c			\
 				ft_split.c			\
+				ft_calloc.c			\
+				ft_strdup.c			\
 				ft_strlen.c			\
 				ft_strcmp.c			\
+				ft_strjoin.c		\
+				ft_file_size.c		\
 				ft_putstr_fd.c		\
+				ft_putchar_fd.c		\
+				ft_putlnbr_fd.c		\
 				ft_putendl_fd.c		\
 
 STS_SRCS	:=	\
@@ -50,6 +58,8 @@ STS_OBJS	:=	${addprefix ${OBJD}, ${STS_SRCS:.c=.o}}
 STL_OBJS	:=	${addprefix ${OBJD}, ${STL_SRCS:.c=.o}}
 STSL_OBJS	:=	${addprefix ${OBJD}, ${STSL_SRCS:.c=.o}}
 
+all:	${NAME}_s ${NAME}_l ${NAME}
+
 ${NAME}:	${STSL_OBJS}
 	${LINKER} $@ $^
 
@@ -58,8 +68,6 @@ ${NAME}_s:	${STS_OBJS}
 
 ${NAME}_l:	${STL_OBJS}
 	${LINKER} $@ $^
-
-all:	${NAME}
 
 ${OBJD}%.o:	${SRCD}%.c
 	${MAKEDIR} ${dir $@}
@@ -72,5 +80,11 @@ fclean:
 	${RM} ${OBJD} ${NAME} ${NAME}_s ${NAME}_l
 
 re:	fclean all
+
+re_s:	fclean ${NAME}_s
+
+re_l:	fclean ${NAME}_l
+
+re_sl:	fclean ${NAME}
 
 .PHONY:	all clean fclean re

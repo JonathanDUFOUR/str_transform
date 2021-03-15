@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_s.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:48:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 21:48:25 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/15 19:07:17 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/15 19:09:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
+#include <unistd.h>
 
-int	main(int ac, char **av)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		ret;
-	char	**options;
-
-	(void)ac;
-	options = av + 1;
-	if (!ft_strcmp(*av, "./str_transform_s"))
-		ret = str_transform_s(options, ac - 1);
-	else
-		return (err_msg(WRONG_BIN_NAME));
-	if (ret != SUCCESS)
-		return (err_msg(ret));
-	return (SUCCESS);
+	write(fd, &c, 1);
 }

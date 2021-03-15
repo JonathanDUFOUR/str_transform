@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_s.c                                           :+:      :+:    :+:   */
+/*   ft_file_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:48:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 21:48:25 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/15 17:58:25 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/15 21:30:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
+#include <sys/types.h>
+#include <sys/stat.h>
 
-int	main(int ac, char **av)
+size_t	ft_file_size(char *f)
 {
-	int		ret;
-	char	**options;
+	struct stat	st;
 
-	(void)ac;
-	options = av + 1;
-	if (!ft_strcmp(*av, "./str_transform_s"))
-		ret = str_transform_s(options, ac - 1);
-	else
-		return (err_msg(WRONG_BIN_NAME));
-	if (ret != SUCCESS)
-		return (err_msg(ret));
-	return (SUCCESS);
+	if (!stat(f, &st))
+		return (st.st_size);
+	return (-1);
 }
