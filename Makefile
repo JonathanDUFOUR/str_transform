@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/14 15:35:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/03/14 23:14:05 by jodufour         ###   ########.fr        #
+#    Updated: 2021/03/15 16:47:48 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ INCLUDES	=	includes
 CFLAGS		:=	-Wall -Wextra -ansi -I ${INCLUDES}
 
 COMMON_SRCS	:=	\
-				main.c				\
 				err_msg.c			\
 				ft_split.c			\
 				ft_strlen.c			\
@@ -33,17 +32,19 @@ COMMON_SRCS	:=	\
 				ft_putendl_fd.c		\
 
 STS_SRCS	:=	\
-				${COMMON_SRCS}		\
+				main_s.c			\
 				str_transform_s.c	\
+				${COMMON_SRCS}		\
 
 STL_SRCS	:=	\
-				${COMMON_SRCS}		\
+				main_l.c			\
 				str_transform_l.c	\
+				${COMMON_SRCS}		\
 
 STSL_SRCS	:=	\
-				${COMMON_SRCS}		\
-				str_transform_s.c	\
-				str_transform_l.c	\
+				main.c			\
+				str_transform.c	\
+				${COMMON_SRCS}	\
 
 STS_OBJS	:=	${addprefix ${OBJD}, ${STS_SRCS:.c=.o}}
 STL_OBJS	:=	${addprefix ${OBJD}, ${STL_SRCS:.c=.o}}

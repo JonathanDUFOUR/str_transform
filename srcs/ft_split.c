@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 22:19:44 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/14 22:19:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/15 15:52:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	**populate(char **output, char *ptr, char const *s, char c)
 	return (output);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**output;
 	size_t	size;
@@ -46,7 +46,8 @@ char		**ft_split(char const *s, char c)
 			++size;
 		++len;
 	}
-	if (!(output = malloc(sizeof(char *) * (size + 1) + len + 1)))
+	output = malloc(sizeof(char *) * (size + 1) + len + 1);
+	if (!output)
 		return (NULL);
 	output[size] = NULL;
 	return (populate(output, (char *)(output + size + 1), s, c));

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_l.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 17:22:03 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 16:50:05 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/15 16:49:08 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/15 16:49:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	options = av + 1;
-	if (!ft_strcmp(*av, "./str_transform"))
+	if (!ft_strcmp(*av, "./str_transform_l"))
 	{
-		ft_putendl_fd("Running str_transform", STDOUT);
-		ret = str_transform(options);
+		ft_putendl_fd("Running str_transform_l", STDOUT);
+		ret = str_transform_l(options);
 	}
 	else
 		return (err_msg(WRONG_BIN_NAME));
