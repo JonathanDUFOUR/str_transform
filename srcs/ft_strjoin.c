@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 19:29:53 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 21:31:40 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 20:35:01 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 20:40:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_transform.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*output;
 	char	*p;
@@ -25,7 +25,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (!s2)
 		return (ft_strdup(s1));
 	size = ft_strlen(s1) + ft_strlen(s2);
-	output = ft_calloc((size + 1), sizeof(char));
+	output = malloc((size + 1) * sizeof(char));
 	if (!output)
 		return (NULL);
 	p = output;
@@ -33,6 +33,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		*p++ = *s1++;
 	while (*s2)
 		*p++ = *s2++;
-	*p = '\0';
+	*p = 0;
 	return (output);
 }

@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_s.c                                           :+:      :+:    :+:   */
+/*   options.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:48:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 20:42:25 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 20:06:20 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 20:14:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
-#include "config.h"
+#ifndef OPTIONS_H
+# define OPTIONS_H
 
-int	main(int ac, char **av)
-{
-	int		ret;
+# include <stdlib.h>
+# include "types/t_opt.h"
 
-	(void)ac;
-	if (!ft_strcmp(*av, "./str_transform_s"))
-		ret = str_transform_s(ac, av);
-	else
-		return (err_msg(WRONG_BIN_NAME));
-	if (ret != SUCCESS)
-		return (err_msg(ret));
-	return (SUCCESS);
-}
+# define OPTIONS "rculnLWfosw"
+
+static const t_opt	g_options[] = {
+	{'r', NULL},
+	{'c', NULL},
+	{'u', NULL},
+	{'l', NULL},
+	{'n', NULL},
+	{'L', NULL},
+	{'W', NULL},
+	{'f', NULL},
+	{'o', NULL},
+	{'s', NULL},
+	{'w', NULL},
+	{0, NULL}
+};
+
+#endif

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_s.c                                           :+:      :+:    :+:   */
+/*   t_opt.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:48:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 20:42:25 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 20:03:21 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 20:08:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
-#include "config.h"
+#ifndef T_OPT_H
+# define T_OPT_H
 
-int	main(int ac, char **av)
+typedef struct s_opt	t_opt;
+
+struct s_opt
 {
-	int		ret;
+	char	c;
+	void	(*f);
+};
 
-	(void)ac;
-	if (!ft_strcmp(*av, "./str_transform_s"))
-		ret = str_transform_s(ac, av);
-	else
-		return (err_msg(WRONG_BIN_NAME));
-	if (ret != SUCCESS)
-		return (err_msg(ret));
-	return (SUCCESS);
-}
+#endif

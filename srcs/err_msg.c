@@ -6,11 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 22:28:16 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 18:49:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/16 20:43:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_transform.h"
+#include "config.h"
 
 int	err_msg(int err_code)
 {

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/14 15:35:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/03/16 00:31:30 by jodufour         ###   ########.fr        #
+#    Updated: 2021/03/16 20:34:54 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC			=	gcc -c -o
 LINKER		=	gcc -o
 MAKEDIR		=	mkdir -p
 RM			=	rm -rf
+DEBUG		?=	false
 
 SRCD		=	srcs/
 OBJD		=	objs/
@@ -25,23 +26,20 @@ CFLAGS		:=	-Wall -Wextra -ansi -I ${INCLUDES}
 
 COMMON_SRCS	:=	\
 				err_msg.c			\
-				get_file.c			\
 				ft_bzero.c			\
-				ft_split.c			\
 				ft_calloc.c			\
+				ft_file_size.c		\
+				ft_putchar_fd.c		\
+				ft_putendl_fd.c		\
+				ft_putlnbr_fd.c		\
+				ft_putnbr_fd.c		\
+				ft_putstr_fd.c		\
+				ft_split.c			\
 				ft_strdup.c			\
-				ft_strchr.c			\
+				ft_strjoin.c		\
 				ft_strlen.c			\
 				ft_strcmp.c			\
-				strcat_one.c		\
-				ft_strjoin.c		\
-				ft_file_size.c		\
-				ft_putstr_fd.c		\
-				ft_putnbr_fd.c		\
-				ft_putchar_fd.c		\
-				ft_putlnbr_fd.c		\
-				ft_putendl_fd.c		\
-				which_config_flag.c	\
+				get_file.c			\
 
 STS_SRCS	:=	\
 				main_s.c			\
@@ -61,6 +59,12 @@ STSL_SRCS	:=	\
 STS_OBJS	:=	${addprefix ${OBJD}, ${STS_SRCS:.c=.o}}
 STL_OBJS	:=	${addprefix ${OBJD}, ${STL_SRCS:.c=.o}}
 STSL_OBJS	:=	${addprefix ${OBJD}, ${STSL_SRCS:.c=.o}}
+
+ifeq (${DEBUG},true)
+CFLAGS	:=	-g ${CFLAGS} -D DEBUG
+else
+CFLAGS	:=	-O2 ${CFLAGS}
+endif
 
 all:	${NAME}_s ${NAME}_l ${NAME}
 

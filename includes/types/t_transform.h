@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   which_config_flag.c                                :+:      :+:    :+:   */
+/*   t_transform.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 22:16:52 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 00:27:35 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 20:23:41 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 20:23:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
+#ifndef T_TRANSFORM_H
+# define T_TRANSFORM_H
 
-char	which_config_flag(char *option)
-{
-	if (!ft_strcmp(option, "-f"))
-		return ('f');
-	if (!ft_strcmp(option, "-o"))
-		return ('o');
-	if (!ft_strcmp(option, "-w"))
-		return ('w');
-	if (!ft_strcmp(option, "-s"))
-		return ('s');
-	if (!ft_strcmp(option, "-"))
-		return ('-');
-	return (0);
-}
+typedef int	t_transform;
+
+#endif

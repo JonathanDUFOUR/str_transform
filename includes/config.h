@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 00:20:22 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 00:22:56 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 20:19:39 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 20:41:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
+#ifndef CONFIG_H
+# define CONFIG_H
 
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
+# define BUFF_SIZE 16384
+# define MAX_QUEUE_SIZE 20
 
-	if (!c)
-		return (((char *)s) + ft_strlen(s));
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			return (((char *)s) + i);
-		++i;
-	}
-	return (NULL);
-}
+# define SUCCESS 0
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
+#endif

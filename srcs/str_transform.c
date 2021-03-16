@@ -6,23 +6,15 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:09:44 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 17:46:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/16 20:47:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_transform.h"
+#include "config.h"
 
-int	str_transform(char **options)
+int	str_transform(int ac, char **av)
 {
-	char	**p;
-
 	ft_putendl_fd("Running str_transform", STDOUT);
-	p = options;
-	ft_putendl_fd("options are :", STDOUT);
-	while (*p)
-	{
-		ft_putendl_fd(*p, STDOUT);
-		++p;
-	}
 	return (SUCCESS);
 }

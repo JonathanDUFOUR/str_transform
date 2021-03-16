@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 23:18:20 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/15 23:21:10 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/16 15:43:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned	abs;
-	char		d;
+	unsigned int	abs;
+	char			d;
 
 	abs = n;
 	if (n < 0)
