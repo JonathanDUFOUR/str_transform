@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 20:18:03 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 20:24:26 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/16 21:04:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 # include "config.h"
 # include "t_transform.h"
 
-typedef t_transform	t_queue[MAX_QUEUE_SIZE];
+typedef t_transform	t_ransforms_queue[MAX_QUEUE_SIZE];
 #endif

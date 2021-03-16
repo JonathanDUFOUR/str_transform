@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_transform_s.c                                  :+:      :+:    :+:   */
+/*   t_ctx.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 18:09:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 22:16:50 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 21:00:50 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 22:18:50 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
-#include "types/t_env.h"
-#include "config.h"
+#ifndef T_CTX_H
+# define T_CTX_H
 
-int	str_transform_s(int ac, char **av)
+# include "types/t_queue.h"
+# include "types/t_flagfield.h"
+
+typedef	struct s_ctx	t_ctx;
+
+struct s_ctx
 {
-	t_env		*myenv;
-	char		*content;
-	int			ret;
+	t_flagfield			flags;
+	t_ransforms_queue	transforms;
+};
 
-	ft_putendl_fd("Running str_transform_s", STDOUT);
-	ret = get_file(&content);
-	if (ret == SUCCESS)
-	{
-		ft_putendl_fd("content:", STDOUT);
-		ft_putstr_fd(content, STDOUT);
-	}
-	free(content);
-	return (ret);
-}
+#endif

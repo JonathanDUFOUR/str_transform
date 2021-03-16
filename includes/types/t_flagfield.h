@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_transform_s.c                                  :+:      :+:    :+:   */
+/*   t_flagfield.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 18:09:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 22:16:50 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 21:22:41 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 21:37:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_transform.h"
-#include "types/t_env.h"
-#include "config.h"
+#ifndef T_FLAGFIELD_H
+# define T_FLAGFIELD_H
 
-int	str_transform_s(int ac, char **av)
-{
-	t_env		*myenv;
-	char		*content;
-	int			ret;
+#include <inttypes.h>
 
-	ft_putendl_fd("Running str_transform_s", STDOUT);
-	ret = get_file(&content);
-	if (ret == SUCCESS)
-	{
-		ft_putendl_fd("content:", STDOUT);
-		ft_putstr_fd(content, STDOUT);
-	}
-	free(content);
-	return (ret);
-}
+typedef uint8_t		t_flagfield;
+
+#endif
