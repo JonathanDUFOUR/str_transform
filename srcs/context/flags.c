@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_queue.h                                          :+:      :+:    :+:   */
+/*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 20:18:03 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 22:22:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/16 21:40:08 by jodufour          #+#    #+#             */
+/*   Updated: 2021/03/16 23:00:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_QUEUE_H
-# define T_QUEUE_H
+#include "flags.h"
 
-# include "config.h"
-# include "types/t_transform.h"
+bool	is_flag_set(const t_ctxp ctx, const t_flag flag)
+{
+	return ((ctx->flags & flag) == flag);
+}
 
-typedef t_transform	t_ransforms_queue[MAX_QUEUE_SIZE];
-#endif
+void	set_flag(t_ctxp ctx, const t_flag flag)
+{
+	ctx->flags |= flag;
+}
+
+void	toggle_flag(t_ctxp ctx, const t_flag flag)
+{
+	ctx->flags ^= flag;
+}
+
+void	unset_flag(t_ctxp ctx, const t_flag flag)
+{
+	ctx->flags &= ~flag;
+}
+
+void	reset_flag(t_ctxp ctx)
+{
+	ctx->flags = 0u;
+}

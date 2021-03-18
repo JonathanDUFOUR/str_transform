@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:22:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/03/16 20:58:49 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/03/18 16:23:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,24 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <getopt.h>
+# include "context.h"
 
-enum	e_rror_code
+enum	e_ret_code
 {
 	READ_ERROR = -1,
-	WRONG_BIN_NAME,
-	MALLOC_ERROR
+	SUCCESS,
+	MALLOC_ERROR,
+	UNKNOWN_OPT_ERROR
 };
 
 int		err_msg(int err_code);
 int		get_file(char **buff);
+int		get_flags(int ac, char **av, t_ctxp ctx);
 int		ft_strcmp(char *s1, char *s2);
-int		str_transform(int ac, char **av);
-int		str_transform_s(int ac, char **av);
-int		str_transform_l(int ac, char **av);
+int		str_transform(int ac, char **av, t_ctxp ctx);
+int		str_transform_s(int ac, char **av, t_ctxp ctx);
+int		str_transform_l(int ac, char **av, t_ctxp ctx);
+void	print_ctx(t_ctxp ctx);
 void	ft_bzero(void *s, size_t n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);

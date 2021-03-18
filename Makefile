@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/14 15:35:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/03/16 20:34:54 by jodufour         ###   ########.fr        #
+#    Updated: 2021/03/18 16:14:54 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,13 @@ INCLUDES	=	includes
 
 CFLAGS		:=	-Wall -Wextra -ansi -I ${INCLUDES}
 
+CONTEXT		:=	\
+				flags.c		\
+				print_ctx.c
+CONTEXT		:=	${addprefix context/, ${CONTEXT}}
+
 COMMON_SRCS	:=	\
+				${CONTEXT}			\
 				err_msg.c			\
 				ft_bzero.c			\
 				ft_calloc.c			\
@@ -40,6 +46,7 @@ COMMON_SRCS	:=	\
 				ft_strlen.c			\
 				ft_strcmp.c			\
 				get_file.c			\
+				get_flags.c
 
 STS_SRCS	:=	\
 				main_s.c			\
@@ -78,7 +85,7 @@ ${NAME}_l:	${STL_OBJS}
 	${LINKER} $@ $^
 
 ${OBJD}%.o:	${SRCD}%.c
-	${MAKEDIR} ${dir $@}
+	@${MAKEDIR} ${dir $@}
 	${CC} $@ ${CFLAGS} $<
 
 clean:
